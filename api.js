@@ -1,13 +1,7 @@
 // Detect if user is on IE browser
 const isIE = !!window.MSInputMethodContext && !!document.documentMode;
 
-// Array to store script Polyfill URLs
-var scriptUrlsPolyfill = [
-  'https://cdn.jsdelivr.net/npm/promise-polyfill@8.3.0/dist/polyfill.min.js',
-  'https://cdn.jsdelivr.net/npm/whatwg-fetch@3.6.20/dist/fetch.umd.min.js',
-];
-
-export function getData(
+export function getRecommendations(
   publisher_id = 'taboola-templates',
   app_type = 'desktop',
   app_apikey = 'f9040ab1b9c802857aa783c469d0e0ff7e7366e4',
@@ -17,51 +11,70 @@ export function getData(
 
   // Check if the browser is Internet Explorer
   if (isIE) {
-    // Initialize a counter to keep track of loaded scripts
-    let loadedScripts = 0;
-
-    // Load each script from the provided URLs array
-    scriptUrlsPolyfill.forEach((url) => {
-      // Create a script element for each URL
-      var script = document.createElement('script');
-      // Set the type of the script to JavaScript
-      script.type = 'text/javascript';
-      // Set the source URL of the script
-      script.src = url;
-
-      // Set the onload event handler for each script
-      script.onload = checkAllScriptsLoaded;
-
-      // Append each script to the document head
-      document.head.appendChild(script);
-
-      // Increment the counter for loaded scripts
-      loadedScripts++;
+    httpRequest(url, (response) => {
+      return JSON.parse(response)
     });
-
-    // Once all scripts are loaded, check if all expected scripts are loaded
-    if (loadedScripts === scriptUrlsPolyfill.length) {
-      // If all scripts are loaded, proceed to fetch data using the provided URL
-      return fetchData(url, true);
-    }
   } else {
     // If the browser is not Internet Explorer, simply run the fetch function with the provided URL
-    return fetchData(url);
+    return fetchRequest(url);
   }
 }
 
 /**
- * Asynchronously fetches data from the specified URL.
+ * Asynchronously fetches data from the specified URL using the fetch API with optional configurations.
  * @param {string} url - The URL to fetch data from.
- * @param {boolean} polyfill - Optional parameter specifying whether to use a polyfill for older browsers.
+ * @param {Object} options - Optional configurations for the fetch request such as method, headers, body, etc.
  * @returns {Promise} A promise that resolves to the fetched data.
+ * @throws {Error} If an error occurs during the fetching process.
  */
-async function fetchData(url, polyfill = false) {
+async function fetchRequest(url, options) {
   try {
-    const response = polyfill ? await window.fetch(url) : await fetch(url);
+    // Fetch data from the specified URL using the provided options
+    const response = await fetch(url, options);
+
+    // Parse the response body as JSON
     const data = await response.json();
+
+    // Return the fetched data
     return data;
   } catch (error) {
+    // If an error occurs during fetching or parsing, throw the error
     throw error;
   }
+}
+
+/**
+ * Sends an HTTP request to the specified URL using XMLHttpRequest with optional configurations.
+ * @param {string} url - The URL to send the request to.
+ * @param {function} callback - The callback function to execute upon completion of the request. 
+ * @param {Object} options - Optional configurations for the request such as method, headers, body, etc.
+ */
+function httpRequest(url, callback, options = {}) {
+  // Create a new XMLHttpRequest object
+  var xhr = new XMLHttpRequest();
+
+  // Set up event handler to execute when the state of the request changes
+  xhr.onreadystatechange = () => {
+    // Check if the request is done (readyState 4)
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      // If the request is successful (status code 200), execute the callback with the response text
+      if (xhr.status === 200) {
+        callback(xhr.responseText);
+      } else {
+        // If there's an error (status code other than 200), throw an error
+        throw new Error("HTTP request failed with status: " + xhr.status);
+      }
+    }
+  };
+
+  // Open the HTTP request with the specified method (default is "GET") and URL
+  xhr.open(options.method || "GET", url);
+
+  // Set request headers based on options.headers
+  for (const header in options.headers) {
+    xhr.setRequestHeader(header, options.headers[header]);
+  }
+
+  // Send the request with optional request body
+  xhr.send(options.body);
 }

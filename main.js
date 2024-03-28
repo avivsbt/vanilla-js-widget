@@ -1,5 +1,5 @@
 import './style.css';
-import { getData } from './api.js';
+import { getRecommendations } from './api.js';
 
 document.querySelector('#app').innerHTML = `
   <div>
@@ -7,6 +7,5 @@ document.querySelector('#app').innerHTML = `
   </div>
 `;
 
-getData().then((res) => {
-  console.log(res);
-});
+getRecommendations();
+
