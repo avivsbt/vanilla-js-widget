@@ -1,3 +1,6 @@
+import { store } from './store.js'
+import { data } from './data.js'
+
 // Detect if user is on IE browser
 const isIE = !!window.MSInputMethodContext && !!document.documentMode;
 
@@ -11,12 +14,15 @@ export function getRecommendations(
 
   // Check if the browser is Internet Explorer
   if (isIE) {
-    httpRequest(url, (response) => {
-      return JSON.parse(response)
+    httpRequest(url, function (response) {
+      store.dispatch("setSponsoredRecommendations", [response.list]);
     });
   } else {
     // If the browser is not Internet Explorer, simply run the fetch function with the provided URL
-    return fetchRequest(url);
+    fetchRequest(url).then(response => {
+      response.list = data
+      store.dispatch("setSponsoredRecommendations", [response.list]);
+    });
   }
 }
 
