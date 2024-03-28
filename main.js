@@ -5,7 +5,7 @@ import { store } from './store.js'
 var recommendations = document.getElementById("recommendations");
 
 store.subscribe(recommendations, "setSponsoredRecommendations", function(sponsored, action, store) {  
-
+  console.log(sponsored)
   var item = document.createElement('div');
   var h1 = document.createElement('h1');
 
