@@ -8,8 +8,4 @@ store.setSponsoredRecommendations = function (data) {
     this.sponsoredRecommendations.push(data)
 }
 
-store.updateSponsoredRecommendations = function (data, category) {
-    this.sponsoredRecommendations[0][category] = this.sponsoredRecommendations[0][category].filter(e => e.id !== data.id);
-}
-
 export { store };

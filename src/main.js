@@ -11,18 +11,20 @@ store.subscribe(sponsoreds, "setSponsoredRecommendations", function (recommendat
 
     let attrCategory = element.getAttribute("category");
     let attrComponent = element.getAttribute("component");
+    let attrAmount = element.getAttribute("amount") || 1;
     let attrCredit = element.getAttribute("credit") || false;
 
     if (!recommendations[attrCategory].length) break;
 
     let component = document.createElement(attrComponent);
     component.setAttribute("category", attrCategory);
-    component.setAttribute("data", JSON.stringify(recommendations[attrCategory][0]));
+    component.setAttribute("data", JSON.stringify(recommendations[attrCategory].splice(0, attrAmount)));
 
     if (attrCredit) {
-      let textNode = document.createTextNode("created by aviv");
+      let text = document.createElement("small");
+      text.innerText = "created by taboola"
       let slot = component.shadowRoot.querySelector('slot[name="credit"]');
-      slot.appendChild(textNode);
+      slot.appendChild(text);
     }
 
     element.appendChild(component);
