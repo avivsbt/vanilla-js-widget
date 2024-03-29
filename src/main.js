@@ -11,7 +11,7 @@ store.subscribe(sponsoreds, "setSponsoredRecommendations", function (recommendat
 
     let attrCategory = element.getAttribute("category");
     let attrComponent = element.getAttribute("component");
-    let attrCredit = element.getAttribute("Credit") || false;
+    let attrCredit = element.getAttribute("credit") || false;
 
     if (!recommendations[attrCategory].length) break;
 
