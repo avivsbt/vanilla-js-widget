@@ -33,7 +33,15 @@ export function getRecommendations(
   const url = `http://api.taboola.com/1.0/json/${publisher_id}/recommendations.get?app.type=${app_type}&app.apikey=${app_apikey}&count=100&source.type=video&source.id=${source_id}`;
 
   fetchRequest(url).then(response => {
-    response.list = data
-    store.dispatch("updateSponsoredRecommendations", [response.list]);
+
+    const mappedData = {};
+
+    data.forEach(item => {
+      item.categories.forEach(category => {
+        mappedData[category] ? mappedData[category].push(item) : mappedData[category] = [item];
+      });
+    });
+
+    store.dispatch("updateSponsoredRecommendations", [mappedData]);
   });
 }

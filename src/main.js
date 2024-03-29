@@ -6,9 +6,13 @@ import './components';
 const sponsored = document.querySelectorAll('.recommendations[type="sponsored"]');
 
 store.subscribe(sponsored, "updateSponsoredRecommendations", function (recommendations, action, store) {
+
   sponsored.forEach(element => {
-    var component = element.getAttribute("component");
+    let component = element.getAttribute("component");
+    let category = element.getAttribute("category");
     var item = document.createElement(component);
+
+    console.log(recommendations[category]);
 
     var textNode = document.createTextNode("Text for the slot");
     var slot = item.shadowRoot.querySelector('slot[name="title"]');
