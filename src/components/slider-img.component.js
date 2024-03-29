@@ -34,15 +34,14 @@ export class SliderImgComponent extends HTMLElement {
     attributeChangedCallback(attrName, oldVal, newVal) {
 
         if (attrName.toLowerCase() === 'data') {
-
-            const data = JSON.parse(newVal);
-            console.log(data);
-
-            for (const element of data) {
+            for (const element of JSON.parse(newVal)) {
+                
                 const root = this.shadowRoot;
+
                 let component = document.createElement('banner-img');
                 component.setAttribute("category", this.category);
                 component.setAttribute("data", JSON.stringify([element]));
+
                 const slider = root.querySelector('.slider');
                 slider.appendChild(component);
             }
