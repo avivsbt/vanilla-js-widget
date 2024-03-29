@@ -16,6 +16,7 @@ export function getRecommendations(
 
     data.forEach(item => {
       item.categories.forEach(category => {
+        item = {...item, isViewed: false}
         mappedData[category] ? mappedData[category].push(item) : mappedData[category] = [item];
       });
     });
