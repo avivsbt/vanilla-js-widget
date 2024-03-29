@@ -1,5 +1,3 @@
-import { store } from "../store";
-
 const template = document.createElement("template");
 
 template.innerHTML = `
@@ -39,7 +37,7 @@ template.innerHTML = `
             <span part="origin-banner-img" class="origin"></span>
         </div>
  
-    <div>
+    </div>
 `;
 
 export class BannerImgComponent extends HTMLElement {
@@ -62,7 +60,7 @@ export class BannerImgComponent extends HTMLElement {
 
         if (attrName.toLowerCase() === 'data') {
             
-            const data = JSON.parse(newVal);
+            const data = JSON.parse(newVal)[0];
 
             const root = this.shadowRoot;
             const title = root.querySelector('.title');
@@ -77,10 +75,8 @@ export class BannerImgComponent extends HTMLElement {
             origin.textContent = data.origin;
             branding.textContent = data.branding;
             
-            store.dispatch("updateSponsoredRecommendations", [data, this.category]);
         };
     }
-
 }
 
 
