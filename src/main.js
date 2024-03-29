@@ -2,23 +2,24 @@ import './style.css';
 import { getRecommendations } from './api';
 import { store } from './store';
 
-import { OneImg } from './components/one-img';
+import './components';
 
-var sponsored = document.querySelector(".sponsored");
+var sponsored = document.querySelectorAll(".sponsored");
 
-store.subscribe(sponsored, "updateSponsoredRecommendations", function(recommendations, action, store) {  
+store.subscribe(sponsored, "updateSponsoredRecommendations", function (recommendations, action, store) {
+  sponsored.forEach(element => {
+    var component = element.getAttribute("component");
+    var item = document.createElement(component);
 
-  var item = document.createElement('one-img');
-  // Create a text node
-  var textNode = document.createTextNode("Text for the slot");
-  // Get the slot element
-  var slot = item.shadowRoot.querySelector('slot[name="title"]');
-  // Append the text node to the slot
-  slot.appendChild(textNode);
-  this.appendChild(item);
+    var textNode = document.createTextNode("Text for the slot");
+    var slot = item.shadowRoot.querySelector('slot[name="title"]');
+    slot.appendChild(textNode);
+
+    element.appendChild(item);
+  });
 });
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   getRecommendations();
 });
 

@@ -2,12 +2,12 @@ const template = document.createElement("template");
 
 template.innerHTML = `
     <div>
-        <h1>Hello</h1>
+        <h1>Hello (SlideImg)</h1>
         <slot name="title"></slot>
     <div>
 `;
 
-export class OneImg extends HTMLElement {
+export class SlideImg extends HTMLElement {
     constructor() {
         super();
         const shadowRoot = this.attachShadow({ mode: 'open' });
@@ -16,4 +16,4 @@ export class OneImg extends HTMLElement {
     }
 }
 
-customElements.define('one-img', OneImg);
+customElements.define('slide-img', SlideImg);
