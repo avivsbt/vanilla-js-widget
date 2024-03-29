@@ -7,7 +7,7 @@ template.innerHTML = `
     <div>
 `;
 
-export class SlideImg extends HTMLElement {
+export class SliderImgComponent extends HTMLElement {
     constructor() {
         super();
         const shadowRoot = this.attachShadow({ mode: 'open' });
@@ -16,4 +16,4 @@ export class SlideImg extends HTMLElement {
     }
 }
 
-customElements.define('slide-img', SlideImg);
+customElements.define('slider-img', SliderImgComponent);

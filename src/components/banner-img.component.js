@@ -7,13 +7,13 @@ template.innerHTML = `
     <div>
 `;
 
-export class OneImg extends HTMLElement {
+export class BannerImgComponent extends HTMLElement {
     constructor() {
         super();
-        const shadowRoot = this.attachShadow({ mode: 'open' });
+        const root = this.attachShadow({ mode: 'open' });
         let clone = template.content.cloneNode(true);
-        shadowRoot.append(clone)
+        root.append(clone)
     }
 }
 
-customElements.define('one-img', OneImg);
+customElements.define('banner-img', BannerImgComponent);

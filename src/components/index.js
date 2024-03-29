@@ -1,2 +1,2 @@
-export { OneImg } from "./one-img";
-export { SlideImg } from "./slide-img";
+export { BannerImgComponent } from "./banner-img.component";
+export { SliderImgComponent } from "./slider-img.component";
