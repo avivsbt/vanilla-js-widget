@@ -1,8 +1,13 @@
+import { store } from "../store";
+
 const template = document.createElement("template");
 
 template.innerHTML = `
     <div class="root">
-        <h1 class="title">Hello</h1>
+        <a class="link">
+            <img class="img"/>
+            <h1 class="title"></h1>
+        <a>
         <slot name="credit"></slot>
     <div>
 `;
@@ -16,26 +21,33 @@ export class BannerImgComponent extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['data'];
+        return ['data', 'category'];
+    }
+
+    get category() {
+        return this.getAttribute('category');
     }
 
     attributeChangedCallback(attrName, oldVal, newVal) {
 
-        const data = JSON.parse(newVal);
-
         if (attrName.toLowerCase() === 'data') {
-            for (const item of data) {
-                console.log(item);
-                if (!item.isViewed) {
-                    const root = this.shadowRoot;
-                    const dataPlaceholder = root.querySelector('.title');
-                    dataPlaceholder.textContent = item.name;
-                    break
-                }
-            };
-        }
+            
+            const data = JSON.parse(newVal);
 
+            const root = this.shadowRoot;
+            const title = root.querySelector('.title');
+            const img = root.querySelector('.img');
+            const link = root.querySelector('.link');
+
+            title.textContent = data.name;
+            img.setAttribute('src', data.thumbnail[0].url);
+            link.setAttribute('href', data.url);
+            
+            store.dispatch("updateSponsoredRecommendations", [data, this.category]);
+        };
     }
+
 }
+
 
 customElements.define('banner-img', BannerImgComponent);

@@ -1,33 +1,36 @@
 import './style.css';
-import { getRecommendations } from './api';
+import { getSponsoredRecommendations } from './api';
 import { store } from './store';
 import './components';
 
-const sponsored = document.querySelectorAll('.recommendations[type="sponsored"]');
+const sponsoreds = document.querySelectorAll('.rwt[type="sponsored"]');
 
-store.subscribe(sponsored, "updateSponsoredRecommendations", function (recommendations, action, store) {
+store.subscribe(sponsoreds, "setSponsoredRecommendations", function (recommendations, action, store) {
 
-  sponsored.forEach(element => {
-    let attrComponent = element.getAttribute("component");
+  for (const element of sponsoreds) {
+
     let attrCategory = element.getAttribute("category");
+    let attrComponent = element.getAttribute("component");
     let attrCredit = element.getAttribute("Credit") || false;
 
-    console.log(recommendations);
+    if (!recommendations[attrCategory].length) break;
+
     let component = document.createElement(attrComponent);
-    component.setAttribute("data", JSON.stringify(recommendations[attrCategory]));
+    component.setAttribute("category", attrCategory);
+    component.setAttribute("data", JSON.stringify(recommendations[attrCategory][0]));
 
     if (attrCredit) {
-      let textNode = document.createTextNode("created by");
-      let slot = component.shadowRoot.querySelector('slot[name="title"]');
+      let textNode = document.createTextNode("created by aviv");
+      let slot = component.shadowRoot.querySelector('slot[name="credit"]');
       slot.appendChild(textNode);
     }
 
     element.appendChild(component);
-  });
+  }
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  getRecommendations();
+  getSponsoredRecommendations();
 });
 
 
