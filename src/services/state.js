@@ -11,7 +11,7 @@ State.prototype.subscribe = function (element, action, callback) {
 
 State.prototype.dispatch = function (action, data) {
     
-    data = data;
+    data = data || [];
 
     // Call action reducers
     if ("function" === typeof this[action]) {

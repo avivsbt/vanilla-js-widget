@@ -7,18 +7,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
   <title>Recommendation Widget</title>
+
+  <script type="text/javascript">
+    var isIE = (!!window.MSInputMethodContext && !!document.documentMode) || navigator.appVersion.indexOf("MSIE 10") !== -1;
+    if (isIE) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'ie/styles.css';
+      document.head.appendChild(link);
+
+      var script = document.createElement('script');
+      script.src = 'ie/script.js';
+      document.head.appendChild(script);
+    }
+  </script>
+
+  <!--[if !IE]> -->
+  <script src="src/main.js" type="module"></script>
+  <!-- <![endif]-->
 </head>
 
 <body>
-  <div id="recommendations"></div>
-
-
-  <!--[if IE]>
-    <script src="/main_ie.js"></script>
-  <![endif]-->
-  <!--[if !IE]> -->
-  <script src="/main.js" type="module"></script>
-  <!-- <![endif]-->
+  <div class="sponsored"></div>
 </body>
 
 </html>
