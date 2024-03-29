@@ -1,10 +1,9 @@
 import './style.css';
 import { getRecommendations } from './api';
 import { store } from './store';
-
 import './components';
 
-var sponsored = document.querySelectorAll(".sponsored");
+const sponsored = document.querySelectorAll('.recommendations[type="sponsored"]');
 
 store.subscribe(sponsored, "updateSponsoredRecommendations", function (recommendations, action, store) {
   sponsored.forEach(element => {
