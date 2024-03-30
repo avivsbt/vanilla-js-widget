@@ -7,6 +7,10 @@
   background-color: #242424;
 }
 
-::part(link-banner-img) {
-  
+.column ::part(slider) {
+  flex-direction: column;
+}
+
+.width-30 ::part(slider) {
+  width: 30%;
 }
