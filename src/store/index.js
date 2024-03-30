@@ -1,7 +1,6 @@
 import { State } from '../services/state.js';
 
 var store = new State();
-store.organicRecommendations = [];
 store.sponsoredRecommendations = [];
 
 store.setSponsoredRecommendations = function (data) {
