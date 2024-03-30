@@ -4,7 +4,7 @@ var store = new State();
 store.sponsoredRecommendations = [];
 
 store.setSponsoredRecommendations = function (data) {
-    this.sponsoredRecommendations.push(data)
+    this.sponsoredRecommendations.push(data);
 }
 
 store.removeItemSponsoredRecommendations = function (id, category) {

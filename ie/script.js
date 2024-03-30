@@ -1,5 +1,5 @@
 
-function getRecommendations() {
+function getSponsoredRecommendations() {
   var url = "http://api.taboola.com/1.0/json/taboola-templates/recommendations.get?app.type=desktop&app.apikey=f9040ab1b9c802857aa783c469d0e0ff7e7366e4&count=100&source.type=video&source.id="
 
   httpRequest(url, function (response) {
@@ -88,7 +88,7 @@ store.removeItemSponsoredRecommendations = function (id, category) {
   });
 };
 
-var sponsoreds = document.querySelectorAll('.rwt');
+var sponsoreds = document.getElementsByClassName('rwt');
 
 var sponsoredsFiltered = [];
 for (var i = 0; i < sponsoreds.length; i++) {
