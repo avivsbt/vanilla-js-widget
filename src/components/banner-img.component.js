@@ -28,7 +28,7 @@ template.innerHTML = `
 
     <div part="warpper-banner-img" class="root">
 
-        <a part="link-banner-img" class="link">
+        <a target="_blank" part="link-banner-img" class="link">
             
             <img part="img-banner-img" class="img"/>
 
