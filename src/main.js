@@ -18,7 +18,7 @@ store.subscribe(sponsoreds, "setSponsoredRecommendations", function (recommendat
 
     let component = document.createElement(attrComponent);
     component.setAttribute("category", attrCategory);
-    component.setAttribute("data", JSON.stringify(recommendations[attrCategory].splice(0, attrAmount)));
+    component.setAttribute("amount", attrAmount);
 
     if (attrCredit) {
       let text = document.createElement("small");

@@ -24,7 +24,7 @@ export class SliderImgComponent extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['data', 'category'];
+        return ['category', 'amount'];
     }
 
     get category() {
@@ -33,18 +33,16 @@ export class SliderImgComponent extends HTMLElement {
 
     attributeChangedCallback(attrName, oldVal, newVal) {
 
-        if (attrName.toLowerCase() === 'data') {
-            for (const element of JSON.parse(newVal)) {
-                
-                const root = this.shadowRoot;
+        if (attrName.toLowerCase() === 'amount') {
 
+            const root = this.shadowRoot;
+            const slider = root.querySelector('.slider');
+
+            Array.from({ length: newVal }).forEach(__ => {
                 let component = document.createElement('banner-img');
                 component.setAttribute("category", this.category);
-                component.setAttribute("data", JSON.stringify([element]));
-
-                const slider = root.querySelector('.slider');
                 slider.appendChild(component);
-            }
+            });
         };
     }
 }

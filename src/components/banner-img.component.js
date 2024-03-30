@@ -1,3 +1,5 @@
+import { store } from "../store";
+
 const template = document.createElement("template");
 
 template.innerHTML = `
@@ -49,7 +51,7 @@ export class BannerImgComponent extends HTMLElement {
     }
 
     static get observedAttributes() {
-        return ['data', 'category'];
+        return ['category'];
     }
 
     get category() {
@@ -58,9 +60,9 @@ export class BannerImgComponent extends HTMLElement {
 
     attributeChangedCallback(attrName, oldVal, newVal) {
 
-        if (attrName.toLowerCase() === 'data') {
-            
-            const data = JSON.parse(newVal)[0];
+        if (attrName.toLowerCase() === 'category') {
+
+            const data = store.sponsoredRecommendations[0][this.category][0];
 
             const root = this.shadowRoot;
             const title = root.querySelector('.title');
@@ -74,7 +76,9 @@ export class BannerImgComponent extends HTMLElement {
             link.setAttribute('href', data.url);
             origin.textContent = data.origin;
             branding.textContent = data.branding;
-            
+
+            store.dispatch("removeItemSponsoredRecommendations", [data.id, this.category]);
+
         };
     }
 }
