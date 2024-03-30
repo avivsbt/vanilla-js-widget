@@ -7,6 +7,11 @@
   background-color: #242424;
 }
 
+.rwt {
+  max-width: 980px;
+  margin: 0 auto 20px auto;
+}
+
 .column ::part(slider) {
   flex-direction: column;
 }
