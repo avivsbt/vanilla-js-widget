@@ -1,3 +1,4 @@
+import { store } from "../store";
 import { BannerImgComponent } from "./banner-img.component";
 
 const template = document.createElement("template");
@@ -38,11 +39,14 @@ export class SliderImgComponent extends HTMLElement {
             const root = this.shadowRoot;
             const slider = root.querySelector('.slider');
 
-            Array.from({ length: newVal }).forEach(__ => {
+            for (let i = 0; i < newVal; i++) {
+                
+                if (!store.sponsoredRecommendations[0][this.category].length) break;
+
                 let component = document.createElement('banner-img');
                 component.setAttribute("category", this.category);
                 slider.appendChild(component);
-            });
+            }
         };
     }
 }
