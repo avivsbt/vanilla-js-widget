@@ -8,12 +8,17 @@ body {
 }
 
 #root-banner-img {
-    width: 100%;
+    width: 300px;
+    margin: 0 auto;
+}
+
+.wrapper-img {
+    height: 200px;
+    overflow: hidden;
 }
 
 .img {
     width: 100%;
-    aspect-ratio: 16 / 9;
 }
 
 .title {
