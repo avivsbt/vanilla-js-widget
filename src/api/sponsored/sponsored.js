@@ -21,15 +21,20 @@ export async function getSponsoredRecommendations(parameters = {}) {
   try {
     const response = await fetchRequest(url);
 
-    const mappedData = {};
+    if (response.list.length) {
+      const mappedData = {};
 
-    data.forEach(item => {
-      item.categories.forEach(category => {
-        mappedData[category] ? mappedData[category].push(item) : (mappedData[category] = [item]);
+      response.list.forEach(item => {
+        item.categories.forEach(category => {
+          mappedData[category] ? mappedData[category].push(item) : (mappedData[category] = [item]);
+        });
       });
-    });
 
-    store.dispatch("setSponsoredRecommendations", [mappedData]);
+      store.dispatch("setSponsoredRecommendations", [mappedData]);
+    }
+    else {
+      console.log("Not found sponsored recommendations");
+    }
 
   } catch (error) {
     console.error("Error fetching sponsored recommendations:", error);
