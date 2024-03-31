@@ -1,6 +1,6 @@
 import { test, expect } from 'vitest';
 import './banner-img.component';
-import { data } from '../../lib/data';
+import { data } from '../../lib/data-test';
 import { store } from '../../store';
 
 test('renders banner with correct content', async () => {
