@@ -5,27 +5,27 @@ import './components';
 
 const sponsoreds = document.querySelectorAll('.rwt[type="sponsored"]');
 
+// Subscribe to store changes and create the component element
 store.subscribe(sponsoreds, "setSponsoredRecommendations", function (recommendations, action, store) {
+  for (const sponsoredElement of sponsoreds) {
 
-  for (const element of sponsoreds) {
+    const category = sponsoredElement.getAttribute("category");
+    const componentType = sponsoredElement.getAttribute("component");
+    const amount = sponsoredElement.getAttribute("amount") || 1;
+    const hasCredit = sponsoredElement.getAttribute("credit") || false;
 
-    let attrCategory = element.getAttribute("category");
-    let attrComponent = element.getAttribute("component");
-    let attrAmount = element.getAttribute("amount") || 1;
-    let attrCredit = element.getAttribute("credit") || false;
+    const component = document.createElement(componentType);
+    component.setAttribute("category", category);
+    component.setAttribute("amount", amount);
 
-    let component = document.createElement(attrComponent);
-    component.setAttribute("category", attrCategory);
-    component.setAttribute("amount", attrAmount);
-
-    if (attrCredit) {
-      let text = document.createElement("small");
-      text.innerText = "created by taboola"
-      let slot = component.shadowRoot.querySelector('slot[name="credit"]');
-      slot.appendChild(text);
+    if (hasCredit) {
+      const creditText = document.createElement("small");
+      creditText.innerText = "Created by Taboola";
+      const creditSlot = component.shadowRoot.querySelector('slot[name="credit"]');
+      creditSlot.appendChild(creditText);
     }
 
-    element.appendChild(component);
+    sponsoredElement.appendChild(component);
   }
 });
 
