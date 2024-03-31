@@ -1,6 +1,6 @@
 import { store } from '../../store/index.js';
-import { data } from '../../lib/data.js';
 import { fetchRequest } from '../../services/api/api.js';
+import { processData } from '../../lib/util.js'
 
 const DEFAULT_PARAMETERS = {
   publisher_id: 'taboola-templates',
@@ -22,14 +22,7 @@ export async function getSponsoredRecommendations(parameters = {}) {
     const response = await fetchRequest(url);
 
     if (response.list.length) {
-      const mappedData = {};
-
-      response.list.forEach(item => {
-        item.categories.forEach(category => {
-          mappedData[category] ? mappedData[category].push(item) : (mappedData[category] = [item]);
-        });
-      });
-
+      const mappedData = await processData(response.list);
       store.dispatch("setSponsoredRecommendations", [mappedData]);
     }
     else {
