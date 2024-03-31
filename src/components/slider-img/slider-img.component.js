@@ -1,5 +1,5 @@
-import { store } from "../store";
-import { BannerImgComponent } from "./banner-img.component";
+import { store } from "../../store";
+import { BannerImgComponent } from "../banner-img/banner-img.component";
 
 const template = document.createElement("template");
 
