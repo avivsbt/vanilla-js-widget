@@ -10,5 +10,9 @@ export default defineConfig({
         { src: 'ie/styles.css', dest: 'ie' },
       ]
     })
-  ]
+  ],
+  test: {
+    globals: true,
+    environment: "jsdom",
+  }
 });
