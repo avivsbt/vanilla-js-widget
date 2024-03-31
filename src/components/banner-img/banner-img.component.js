@@ -7,9 +7,12 @@ template.innerHTML = `
         :host {
             width: 100%;
         }
+        .wrapper-img {
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+        }
         .img {
             width: 100%;
-            aspect-ratio: 16 / 9;
         }
         .title {
             font-size: 14px;
@@ -28,7 +31,9 @@ template.innerHTML = `
     <div part="wrapper-banner-img" class="root">
 
         <a target="_blank" part="link-banner-img" class="link">
-            <img part="img-banner-img" class="img"/>
+            <div part="wrapper-img" class="wrapper-img">
+                <img part="img-banner-img" class="img"/>
+            </div>
             <h1 part="title-banner-img" class="title"></h1>
         </a>
         <div class="type">

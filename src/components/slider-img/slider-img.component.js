@@ -1,5 +1,5 @@
 import { store } from "../../store";
-import { BannerImgComponent } from "../banner-img/banner-img.component";
+import "../banner-img/banner-img.component";
 
 const template = document.createElement("template");
 
@@ -7,7 +7,7 @@ template.innerHTML = `
     <style>
         .slider {
             display: flex;
-            gap: 5px;
+            gap: 10px;
         }
     </style>
     <div part="wrapper-slider-img" class="root">
