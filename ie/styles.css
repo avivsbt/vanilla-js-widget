@@ -5,33 +5,39 @@ body {
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
-}
-
-#root-banner-img {
+  }
+  
+  #root-banner-img {
     width: 300px;
     margin: 0 auto;
-}
-
-.wrapper-img {
+  }
+  
+  .wrapper-img {
     height: 200px;
     overflow: hidden;
-}
-
-.img {
+  }
+  
+  .img {
     width: 100%;
-}
-
-.title {
+    border: 0 none;
+  }
+  
+  .title {
     font-size: 14px;
     padding: 0;
     margin: 0;
-}
-
-a {
+  }
+  
+  .link {
     text-decoration: none;
     color: #fff;
-}
-
-.type {
+  }
+  
+  .link:hover {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .type {
     font-size: 12px;
-}
+  }
