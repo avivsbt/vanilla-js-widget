@@ -4,10 +4,10 @@ const template = document.createElement("template");
 
 template.innerHTML = `
     <style>
-        :host{
+        :host {
             width: 100%;
         }
-        .img{
+        .img {
             width: 100%;
             aspect-ratio: 16 / 9;
         }
@@ -25,14 +25,12 @@ template.innerHTML = `
         }
     </style>
 
-    <div part="warpper-banner-img" class="root">
+    <div part="wrapper-banner-img" class="root">
 
         <a target="_blank" part="link-banner-img" class="link">
-            
             <img part="img-banner-img" class="img"/>
-
             <h1 part="title-banner-img" class="title"></h1>
-        <a>
+        </a>
         <div class="type">
             <span part="branding-banner-img" class="branding"></span> | 
             <span part="origin-banner-img" class="origin"></span>
@@ -40,6 +38,10 @@ template.innerHTML = `
  
     </div>
 `;
+
+// BannerImgComponent is a custom web component that displays banner images and
+// associated information fetched from a store,
+//  updating dynamically based on the specified category attribute.
 
 export class BannerImgComponent extends HTMLElement {
     constructor() {
@@ -57,30 +59,38 @@ export class BannerImgComponent extends HTMLElement {
         return this.getAttribute('category');
     }
 
+    connectedCallback() {
+        this.updateContent();
+    }
+
+    updateContent() {
+        const data = store.sponsoredRecommendations[0]?.[this.category]?.[0];
+        if (!data) {
+            console.error(`No data available for category: ${this.category}`);
+            return;
+        }
+
+        const root = this.shadowRoot;
+        const title = root.querySelector('.title');
+        const img = root.querySelector('.img');
+        const link = root.querySelector('.link');
+        const origin = root.querySelector('.origin');
+        const branding = root.querySelector('.branding');
+
+        title.textContent = data.name;
+        img.setAttribute('src', data.thumbnail?.[0]?.url || '');
+        link.setAttribute('href', data.url || '');
+        origin.textContent = data.origin || '';
+        branding.textContent = data.branding || '';
+
+        store.dispatch("removeItemSponsoredRecommendations", [data.id, this.category]);
+    }
+
     attributeChangedCallback(attrName, oldVal, newVal) {
-
         if (attrName.toLowerCase() === 'category') {
-
-            const data = store.sponsoredRecommendations[0][this.category][0];
-
-            const root = this.shadowRoot;
-            const title = root.querySelector('.title');
-            const img = root.querySelector('.img');
-            const link = root.querySelector('.link');
-            const origin = root.querySelector('.origin');
-            const branding = root.querySelector('.branding');
-
-            title.textContent = data.name;
-            img.setAttribute('src', data.thumbnail[0].url);
-            link.setAttribute('href', data.url);
-            origin.textContent = data.origin;
-            branding.textContent = data.branding;
-
-            store.dispatch("removeItemSponsoredRecommendations", [data.id, this.category]);
-
-        };
+            this.updateContent();
+        }
     }
 }
-
 
 customElements.define('banner-img', BannerImgComponent);
