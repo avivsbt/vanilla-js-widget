@@ -2095,7 +2095,9 @@ function bannerImgComponent(data) {
   template.innerHTML =
     '<div id="root-banner-img">' +
     '   <a target="_blank" class="link">' +
-    '       <img class="img"/>' +
+    '       <div class="warpper-img">' +
+    '         <img class="img"/>' +
+    '       <div/>' +
     '       <h1 class="title"></h1>' +
     '   <a>' +
     '   <div class="type">' +
