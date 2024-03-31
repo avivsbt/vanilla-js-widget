@@ -10,18 +10,21 @@ template.innerHTML = `
             gap: 5px;
         }
     </style>
-    <div part="warpper-slider-img" class="root">
+    <div part="wrapper-slider-img" class="root">
         <slot name="credit"></slot>
         <div part="slider" class="slider"></div>
-    <div>
+    </div>
 `;
+
+// SliderImgComponent is a custom web component for a slider of banner images, 
+// where the number of images displayed is determined by the 'amount' attribute, 
+// fetched from a store based on the 'category' attribute.
 
 export class SliderImgComponent extends HTMLElement {
     constructor() {
         super();
         const shadowRoot = this.attachShadow({ mode: 'open' });
-        let clone = template.content.cloneNode(true);
-        shadowRoot.append(clone)
+        shadowRoot.appendChild(template.content.cloneNode(true));
     }
 
     static get observedAttributes() {
@@ -40,7 +43,7 @@ export class SliderImgComponent extends HTMLElement {
             const slider = root.querySelector('.slider');
 
             for (let i = 0; i < newVal; i++) {
-                
+
                 if (!store.sponsoredRecommendations[0][this.category].length) break;
 
                 let component = document.createElement('banner-img');
