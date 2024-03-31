@@ -79,7 +79,7 @@ function getSponsoredRecommendations() {
       });
     });
     sponsoredRecommendations = mappedData;
-    generateBanner();
+    generateBanners();
   });
 }
 
@@ -119,7 +119,7 @@ function httpRequest(url, callback, options) {
 
 }
 
-function generateBanner() {
+function generateBanners() {
   for (var i = 0; i < sponsoredsElements.length; i++) {
     var element = sponsoredsElements[i];
 
