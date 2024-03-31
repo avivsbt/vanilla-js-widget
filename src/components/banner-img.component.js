@@ -22,7 +22,6 @@ template.innerHTML = `
         }
         .type {
             font-size: 12px;
-
         }
     </style>
 
