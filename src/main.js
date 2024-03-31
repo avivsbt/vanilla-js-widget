@@ -1,5 +1,5 @@
 import './style.css';
-import { getSponsoredRecommendations } from './api';
+import { getSponsoredRecommendations } from './api/sponsored/sponsored';
 import { store } from './store';
 import './components';
 

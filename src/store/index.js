@@ -1,4 +1,4 @@
-import { State } from '../services/state.js';
+import { State } from '../services/state/state.js';
 
 var store = new State();
 store.sponsoredRecommendations = [];

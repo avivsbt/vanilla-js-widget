@@ -1,6 +1,6 @@
-import { store } from '../store/index.js';
-import { data } from '../lib/data.js';
-import { fetchRequest } from '../services/api.js';
+import { store } from '../../store/index.js';
+import { data } from '../../lib/data.js';
+import { fetchRequest } from '../../services/api/api.js';
 
 const DEFAULT_PARAMETERS = {
   publisher_id: 'taboola-templates',
