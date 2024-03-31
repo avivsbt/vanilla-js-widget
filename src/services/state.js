@@ -1,3 +1,7 @@
+// This service facilitates efficient event handling and state management by 
+// create a State object, which includes methods for subscribing to actions and dispatching them 
+// with associated data to registered subscribers.
+
 export function State() {
     this.subscriptions = new Map();
 }
