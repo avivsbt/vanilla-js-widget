@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "vite": "^5.2.6"
+  },
+  "dependencies": {
+    "vite-plugin-static-copy": "^1.0.2"
   }
 }
