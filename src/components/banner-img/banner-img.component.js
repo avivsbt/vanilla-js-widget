@@ -64,17 +64,13 @@ export class BannerImgComponent extends HTMLElement {
         return this.getAttribute('category');
     }
 
-    connectedCallback() {
-        this.updateContent();
-    }
-
     updateContent() {
         const data = store.sponsoredRecommendations[0]?.[this.category]?.[0];
         if (!data) {
             console.error(`No data available for category: ${this.category}`);
             return;
         }
-
+        
         const root = this.shadowRoot;
         const title = root.querySelector('.title');
         const img = root.querySelector('.img');
