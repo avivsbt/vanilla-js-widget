@@ -31,10 +31,42 @@ To add a new banner, we need to provide an HTML element with the following attri
 - `type`: The type of banner, must be "sponsored".
 - `category`: The category of the banner.
 - `class`: Mandatory class "rwt".
+- `credit`: Indicates whether the content is for credit.
+
+You can also insert content between the opening and closing tags using the `slot` element. In this case, the slot is of type "credit".
 
 For example:
 
 ```html
-<div component="banner" amount="3" type="sponsored" category="technology" class="rwt">
-    <!-- Banner content goes here -->
+<div component="banner" amount="3" type="sponsored" category="technology" class="rwt" credit="true">
+    <!-- Slot for custom content of type "credit" -->
+    <slot name="credit"></slot>
 </div>
+
+Before running the HTML page, add the following script in the `<head>` section:
+
+If we want to support IE, use the following script:
+
+```html
+<script type="text/javascript">
+    var isIE = (!!window.MSInputMethodContext && !!document.documentMode) || navigator.appVersion.indexOf("MSIE 10") !== -1;
+    if (isIE) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'ie/styles.css';
+      document.head.appendChild(link);
+
+      var script = document.createElement('script');
+      script.src = 'ie/script.js';
+      document.head.appendChild(script);
+    }
+</script>
+
+For other browsers, use:
+
+```html
+<!--[if !IE]> -->
+<script src="src/main.js" type="module"></script>
+<!-- <![endif]-->
+
+
