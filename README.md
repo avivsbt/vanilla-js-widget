@@ -18,7 +18,7 @@
 ---
 
 ### Edit Online:
-[Edit this project online on StackBlitz](https://stackblitz.com/~/github.com/avivsbt/vanilla-js-widget)
+[Edit this project online on StackBlitz](https://stackblitz.com/~/github.com/avivsbt/vanilla-js-widget?view=editor){:target="_blank"}
 
 ---
 
