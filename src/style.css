@@ -20,7 +20,7 @@
 }
 
 ::part(wrapper-banner-img) {
-  max-width: 500px;
+  width: 500px;
 }
 
 .width-30 ::part(slider) {
