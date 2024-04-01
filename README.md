@@ -42,6 +42,7 @@ For example:
     <!-- Slot for custom content of type "credit" -->
     <slot name="credit"></slot>
 </div>
+```
 
 Before running the HTML page, add the following script in the `<head>` section:
 
@@ -61,6 +62,7 @@ If we want to support IE, use the following script:
       document.head.appendChild(script);
     }
 </script>
+```
 
 For other browsers, use:
 
@@ -68,5 +70,7 @@ For other browsers, use:
 <!--[if !IE]> -->
 <script src="src/main.js" type="module"></script>
 <!-- <![endif]-->
+```
+
 
 
