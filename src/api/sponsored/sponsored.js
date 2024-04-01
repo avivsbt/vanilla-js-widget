@@ -27,6 +27,7 @@ export async function getSponsoredRecommendations(parameters = {}) {
     }
     else {
       console.log("Not found sponsored recommendations");
+      getSponsoredRecommendations();
     }
 
   } catch (error) {
