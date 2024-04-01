@@ -44,7 +44,7 @@ For example:
 </div>
 ```
 
-###Before running the HTML page, add the following script in the `<head>` section:
+### Before running the HTML page, add the following script in the `<head>` section:
 
 If we want to support IE, use the following script:
 
