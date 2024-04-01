@@ -1,6 +1,5 @@
 var sponsoredRecommendations = {};
 var sponsoredsElements = [];
-var i = 0
 
 function getSponsoredRecommendations() {
   var url = "http://api.taboola.com/1.0/json/taboola-templates/recommendations.get?app.type=desktop&app.apikey=f9040ab1b9c802857aa783c469d0e0ff7e7366e4&count=100&source.type=video&source.id="
@@ -40,11 +39,14 @@ function getSponsoredRecommendations() {
             generateBanners();
           }
         };
+        
       });
     }
     else {
       console.log("Not found sponsored recommendations");
-      getSponsoredRecommendations();
+      setTimeout(function () {
+        getSponsoredRecommendations();  
+      }, 1000);
     }
   });
 }
