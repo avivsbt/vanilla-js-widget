@@ -22,6 +22,12 @@
 
 ---
 
+### Application Structure
+
+![](public/taboola.drawio.png)
+
+---
+
 ### Adding a New Banner by the System
 
 To add a new banner, we need to provide an HTML element with the following attributes:
