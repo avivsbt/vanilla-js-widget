@@ -9,11 +9,18 @@
 
 .rwt {
   max-width: 980px;
-  margin: 0 auto 20px auto;
 }
 
 .column ::part(slider) {
   flex-direction: column;
+}
+
+::part(wrapper-slider-img), ::part(wrapper-banner-img) {
+  margin-bottom: 20px;
+}
+
+::part(wrapper-banner-img) {
+  max-width: 500px;
 }
 
 .width-30 ::part(slider) {
