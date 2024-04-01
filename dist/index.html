@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
+  <title>Recommendation Widget</title>
+
+  <script type="text/javascript">
+    var isIE = (!!window.MSInputMethodContext && !!document.documentMode) || navigator.appVersion.indexOf("MSIE 10") !== -1;
+    if (isIE) {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'ie/styles.css';
+      document.head.appendChild(link);
+
+      var script = document.createElement('script');
+      script.src = 'ie/script.js';
+      document.head.appendChild(script);
+    }
+  </script>
+
+  <!--[if !IE]> -->
+  <script type="module" crossorigin src="/assets/index-CW6UUM3t.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-B81ClWX9.css">
+  <!-- <![endif]-->
+</head>
+
+<body>
+
+  <div component="banner-img" type="sponsored" category="fr" class="rwt"></div>
+  
+  <div component="banner-img" type="sponsored" category="en" class="rwt"></div>
+  
+  <div credit="true" component="slider-img" amount="3" type="sponsored" category="fr" class="rwt"></div>
+  
+  <div component="slider-img" amount="3" type="sponsored" category="cs" class="rwt column width-30"></div> 
+
+</body>
+
+</html>
