@@ -16,15 +16,12 @@ store.subscribe(sponsoreds, "setSponsoredRecommendations", async function (recom
     const amount = sponsoredElement.getAttribute("amount") || 1;
     const hasCredit = sponsoredElement.getAttribute("credit") || false;
 
-    const data = store.sponsoredRecommendations[0]?.[category];
-
-    console.log(componentType, "-------", category, "-----------------------", amount);
-    
+    const data = store.sponsoredRecommendations[0]?.[category];  
     
     for (let index = 0; index < data.length; index++) {
-      console.log(data.length, "-------", index, "-----------------------");
+      
       let item = data[index];
-      console.log(item.name);
+      
       const isValidImage = await checkImage(item.thumbnail[0].url);
       
       if (isValidImage && index === amount ) break
@@ -34,8 +31,6 @@ store.subscribe(sponsoreds, "setSponsoredRecommendations", async function (recom
       }
       
     }
-
-    
 
     const component = document.createElement(componentType);
     component.setAttribute("category", category);
@@ -49,7 +44,6 @@ store.subscribe(sponsoreds, "setSponsoredRecommendations", async function (recom
     }
 
     sponsoredElement.appendChild(component);
-    console.log("crated", "-------------------------------------");
   }
 });
 

@@ -2,11 +2,9 @@ export const checkImage = (url) => {
     return new Promise((resolve, reject) => {
         var img = new Image();
         img.onload = function () {
-          console.log("url:", url);
           resolve(true);
         };
         img.onerror = function () {
-          console.log("url:", url);
           resolve(false);
         };
         img.src = url;
