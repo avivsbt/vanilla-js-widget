@@ -9,9 +9,13 @@ template.innerHTML = `
         }
         .wrapper-img {
             overflow: hidden;
-            aspect-ratio: 16 / 9;
+            background-color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .img {
+            object-fit: cover;
             width: 100%;
         }
         .title {
