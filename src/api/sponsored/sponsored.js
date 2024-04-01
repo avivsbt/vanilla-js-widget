@@ -22,6 +22,7 @@ export async function getSponsoredRecommendations(parameters = {}) {
     const response = await fetchRequest(url);
 
     if (response.list.length) {
+      console.log("Loading sponsored recommendations");
       const mappedData = await processData(response.list);
       store.dispatch("setSponsoredRecommendations", [mappedData]);
     }

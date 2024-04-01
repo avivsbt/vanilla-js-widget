@@ -8,6 +8,8 @@ store.setSponsoredRecommendations = function (data) {
 }
 
 store.removeItemSponsoredRecommendations = function (id, category) {
+    
+    console.log("remove", "-------------------------------------");
     this.sponsoredRecommendations[0][category] = this.sponsoredRecommendations[0][category].filter(item => item.id !== id);
 }
 
