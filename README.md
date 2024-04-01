@@ -15,8 +15,12 @@
 ### Building for Production:
 1. Run `npm run build`.
 
+---
+
 ### Edit Online:
 [Edit this project online on StackBlitz](https://stackblitz.com/~/github.com/avivsbt/vanilla-js-widget)
+
+---
 
 ### Adding a New Banner by the System
 
