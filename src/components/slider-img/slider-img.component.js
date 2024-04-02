@@ -9,9 +9,12 @@ template.innerHTML = `
             display: flex;
             gap: 10px;
         }
+        .credit img {
+            width: 100px;
+        }
     </style>
     <div part="wrapper-slider-img" class="root">
-        <slot name="credit"></slot>
+        <slot class="credit" name="credit"></slot>
         <div part="slider" class="slider"></div>
     </div>
 `;
