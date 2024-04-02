@@ -78,5 +78,6 @@ footer {
   padding: 10px;
 }
 
-
-
+.column ::part(slider) {
+  flex-direction: column;
+}

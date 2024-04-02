@@ -18,16 +18,12 @@ template.innerHTML = `
             overflow: hidden;
         }
         .img {
-            object-fit: cover;
+            object-fit: contain;
             width: 100%;
         }
         .title {
             color: black;
             font-size: 12px;
-            border-bottom: 1px solid #ccc;
-            padding: 10px 0;
-            margin-bottom: 10px;
-            height: 25px;
         }
         a {
             text-decoration: none;
