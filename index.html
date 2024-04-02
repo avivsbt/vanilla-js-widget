@@ -25,18 +25,49 @@
   <!--[if !IE]> -->
   <script src="src/main.js" type="module"></script>
   <!-- <![endif]-->
+
+  <!-- Import Google Font -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto&display=swap">
 </head>
 
 <body>
+  <header>
+    <h1>News Website</h1>
+  </header>
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>World</li>
+      <li>Sports</li>
+      <li>Technology</li>
+      <li>Entertainment</li>
+    </ul>
+  </nav>
+  <main>
+    <div class="sidebar">
+      <h2>Sidebar</h2>
+      
+      <div component="banner-img" type="sponsored" category="fr" class="rwt"></div>
 
-  <div component="banner-img" type="sponsored" category="fr" class="rwt w-max-300"></div>
+      <!-- <div component="banner-img" type="sponsored" category="ko" class="rwt w-max-300"></div>
+                
+      <div component="slider-img" amount="3" type="sponsored" category="en" class="rwt w-max-500"></div>
+                
+      <div component="slider-img" amount="3" type="sponsored" category="cs" class="rwt column w-max-300"></div> -->
 
-  <div component="banner-img" type="sponsored" category="ko" class="rwt w-max-300"></div>
-
-  <div component="slider-img" amount="3" type="sponsored" category="en" class="rwt w-max-500"></div>
-
-  <div component="slider-img" amount="3" type="sponsored" category="cs" class="rwt column w-max-300"></div>
-
+    </div>
+    <div class="content">
+      <h2>Main Content Area</h2>
+      <p>This is where the main content of your news website will be.</p>
+      <section>
+        <h3>Additional Section</h3>
+        <div component="slider-img" amount="3" type="sponsored" category="en" class="rwt"></div>
+      </section>
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 News Website. All rights reserved.</p>
+  </footer>
 </body>
 
 </html>

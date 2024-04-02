@@ -6,26 +6,32 @@ template.innerHTML = `
     <style>
         :host {
             width: 100%;
+            height: 100%;
+            display: flex;
+            align-content: space-between;
+            flex-direction: column;
         }
         .wrapper-img {
-            overflow: hidden;
             background-color: #fff;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            height: 200px;
+            overflow: hidden;
         }
         .img {
             object-fit: cover;
             width: 100%;
         }
         .title {
-            font-size: 14px;
-            padding: 0;
-            margin: 0;
+            color: black;
+            font-size: 12px;
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            margin-bottom: 10px;
+            height: 25px;
         }
         a {
             text-decoration: none;
-            color: #fff;
+            color: #000;
         }
         .type {
             font-size: 12px;
