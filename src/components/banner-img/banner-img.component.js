@@ -8,17 +8,14 @@ template.innerHTML = `
             width: 100%;
             height: 100%;
             display: flex;
-            align-content: space-between;
             flex-direction: column;
-        }
+            }
         .wrapper-img {
-            background-color: #fff;
             display: flex;
-            height: 200px;
             overflow: hidden;
         }
         .img {
-            object-fit: contain;
+            object-fit: cover;
             width: 100%;
         }
         .title {
@@ -30,7 +27,7 @@ template.innerHTML = `
             color: #000;
         }
         .type {
-            font-size: 12px;
+            font-size: 13px;
         }
     </style>
 
